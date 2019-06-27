@@ -1,0 +1,11 @@
+{
+  "name": "bootcamp-gostack-gobarber",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Gustavo Baccan Gomes <gustavobaccang@gmail.com>",
+  "description": "Projeto de aplicação GoBarber realizado para o segundo módulo do Bootcamp Gostack da Rocketseat",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
