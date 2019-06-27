@@ -1,7 +1,7 @@
 module.exports = {
   // Para utilizar este dialeto é preciso as dependencias: pg pg-hstore
   dialect: 'postgres',
-  host: 'localhost',
+  host: '192.168.99.100',
   username: 'postgres',
   password: 'docker',
   database: 'gobarber',
