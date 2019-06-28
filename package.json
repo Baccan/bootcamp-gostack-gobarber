@@ -6,6 +6,7 @@
   "description": "Projeto de aplicação GoBarber realizado para o segundo módulo do Bootcamp Gostack da Rocketseat",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "pg": "^7.11.0",
     "pg-hstore": "^2.3.3",
