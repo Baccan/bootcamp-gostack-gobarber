@@ -25,16 +25,16 @@ class User extends Model {
     // Apagando beforeSave e dando ctrl + space vc pode ver todoas as opções
     this.addHook('beforeSave', async user => {
       if (user.password) {
-        console.log(user.password);
         // 8 é a força da criptografia. Valores muito altos acabam pesando na aplicação
         user.password_hash = await bcrypt.hash(user.password, 8);
-        console.log(user.password_hash);
       }
-
-      console.log(user.password_hash);
     });
     // Retorna o model que acaba de ser inicializado
     return this;
+  }
+
+  checkPassword(password) {
+    return bcrypt.compare(password, this.password_hash);
   }
 }
 
