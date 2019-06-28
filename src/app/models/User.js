@@ -1,7 +1,8 @@
 import Sequelize, { Model } from 'sequelize';
 
 class User extends Model {
-  // Método chamado automaticamente pelo sequelize
+  // Método chamado automaticamente pelo sequelize.
+  // Instancia a conexão
   static init(sequelize) {
     // Chama o método init da classe Model e define as colunas que podem ser criadas por usuarios
     super.init(
