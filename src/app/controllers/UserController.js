@@ -20,9 +20,33 @@ class UserController {
 
   // Atualizar dados cadastrais do usuario
   async update(req, res) {
-    console.log(req.userId);
+    const { email, oldPassword } = req.body;
 
-    return res.json({ ok: true });
+    // findByPk - primary key
+    const user = await User.findByPk(req.userId);
+
+    // se o email que o usuario enviou é diferente do email que esta cadastrado, realiza a troca
+    if (email !== user.email) {
+      const userExists = await User.findOne({ where: { email } });
+
+      if (userExists) {
+        return res.status(400).json({ error: 'User already exists.' });
+      }
+    }
+
+    // Se o usuario quer trocar a senha, o valor oldPassword será passado e verificado
+    if (oldPassword && !(await user.checkPassword(oldPassword))) {
+      return res.status(401).json({ error: 'Password does not match' });
+    }
+
+    const { id, name, provider } = await user.update(req.body);
+
+    return res.json({
+      id,
+      name,
+      email,
+      provider,
+    });
   }
 }
 
