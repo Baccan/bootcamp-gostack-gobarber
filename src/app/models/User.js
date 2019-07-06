@@ -36,7 +36,8 @@ class User extends Model {
   static associate(models) {
     // este model de User pertence ao model de File
     // um id de arquivo sera armazenado dentro do model User
-    this.belongsTo(models.File, { foreignKey: 'avatar_id' });
+    // as = codenome para o relacionamento do modelo File
+    this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
   }
 
   checkPassword(password) {
