@@ -17,7 +17,7 @@ const NotificationSchema = new mongoose.Schema(
     },
   },
   {
-    // para inserir created_at e updated_at
+    // para inserir createdAt e updatedAt
     timestamps: true,
   }
 );
