@@ -1,3 +1,6 @@
+import 'dotenv/config';
+// ^^^^^^^^^^^^^ armazena todas as variaveis do arquivo .env em process.env.DB_HOST por exemplo
+
 import express from 'express';
 import path from 'path';
 import Youch from 'youch';
@@ -38,10 +41,14 @@ class App {
 
   exceptionHandler() {
     this.server.use(async (err, req, res, next) => {
-      // também aceita toHTML()
-      const errors = await new Youch(err, req).toJSON();
+      if (process.env.NODE_ENV === 'development') {
+        // também aceita toHTML()
+        const errors = await new Youch(err, req).toJSON();
 
-      return res.status(500).json(errors);
+        return res.status(500).json(errors);
+      }
+
+      return res.status(500).json({ erorr: 'Internal server error' });
     });
   }
 }

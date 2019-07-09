@@ -1,10 +1,13 @@
+require('dotenv/config');
+// ^^^^^^^^^^^^^ armazena todas as variaveis do arquivo .env em process.env.DB_HOST por exemplo
+
 module.exports = {
   // Para utilizar este dialeto é preciso as dependencias: pg pg-hstore
   dialect: 'postgres',
-  host: '192.168.99.100',
-  username: 'postgres',
-  password: 'docker',
-  database: 'gobarber',
+  host: process.env.DB_HOST,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
   define: {
     // Garante uma colune "CreatedAt" e "UpdatedAt" no banco
     timestamps: true,
